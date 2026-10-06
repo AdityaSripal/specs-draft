@@ -89,6 +89,9 @@ nav:
       - "Appendix F: Inbound Transaction Design": rollup0-spec/F-system-transaction-design.md
       - "Appendix G: Blob Payload Design": rollup0-spec/G-blob-payload-design.md
   - Gnosis Chain: gnosis-chain-spec/index.md
+  - Implementations:
+      - Overview: implementations/index.md
+      - "Appendix A: Rollup0 Specification Differences": implementations/A-rollup0-differences.md
 
 plugins:
   - search
