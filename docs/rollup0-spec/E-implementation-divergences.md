@@ -11,6 +11,12 @@ gitlink-pinned `eez-core-protocol` commit `6fcc90b6`, and the then-current stand
 first two commits together; the standalone core tree was also checked for later ABI or relevant
 behavior drift.
 
+!!! note
+    Several statements below are out of date. The
+    [Implementations chapter](../implementations/A-rollup0-differences.md) compares the current
+    `eez-rollup0` and `rollupX` clients with this specification and lists which of these
+    statements still hold.
+
 ## E.1 Anchoring and Data Availability
 
 For each observed Ethereum head, the current client derives a corresponding Sync position and, in
