@@ -67,6 +67,18 @@ Gnosis Chain does not reset its base fee at the fork. The first EEZ-era block de
 `baseFeePerGas` from the designated Gnosis Chain parent using Rollup0's elasticity `2` and
 base-fee-change denominator `50`. Every later block continues that rule.
 
+Gnosis Chain does not support EIP-4844 blob transactions after the fork. From the first EEZ-era
+block, it applies Rollup0's blob rules. Nodes MUST reject type-`0x03` transactions from the
+transaction pool and from `eth_sendRawTransaction`. A block that contains a blob transaction, or a
+transaction with a nonempty blob-versioned-hash list, is invalid. This removal is intentional. Blob
+transactions still pending at the fork can never be included.
+
+Unlike the base fee, the blob-gas state is reset at the fork. The first EEZ-era block MUST set
+`blobGasUsed = 0` and `excessBlobGas = 0`, whatever the designated Gnosis Chain parent's values
+were. Every later block continues Rollup0's rule, so both fields remain zero and `BLOBBASEFEE`
+returns the minimum blob base fee of the active execution fork. The reset makes the transition
+independent of Gnosis Chain's pre-fork blob schedule.
+
 !!! success "DECISION: native xDAI delivery at launch"
     Initial Gnosis Chain supports synchronous Ethereum-to-Gnosis-Chain delivery of native xDAI. It
     uses a Gnosis-specific DAI/xDAI adapter and system action, not Rollup0's ETH `etherBalance`
